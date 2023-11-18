@@ -13,6 +13,30 @@ int main()
     double yc[9] = {0,-6,2,6,3,3,4,-2,10.5};
 
     double R[9] = {1.7,2.3,3.1,3.6,4.1,2.6,0.9,2.1,1.1};
+    double r ;
+    int count = 0;
+    int skip[24] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
+
+    
+    for (int i = 0; i < 24; i++)
+    {
+        for (int k = 0; k < 9; k++)
+        {
+            r = sqrt((x[i]-xc[k])*(x[i]-xc[k]) + (y[i]-yc[k])*(y[i]-yc[k]));
+            if (r < R[k]){
+                skip[i] = 1;
+                cout<<x[i]<<" "<<y[i]<<endl;
+                if (x[i]>1){ skip[i] = 1;}
+            }
+            
+        }
+        
+    }
+    for (int i = 0; i < 24; i++) {
+        cout<<skip[i]<<" ";
+    }
+ 
+ 
     
     cout<<"Hello World";
 
