@@ -18,20 +18,16 @@ int main()
     int skip[24] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
 
     
-    for (int i = 0; i < 24; i++)
-    {
-        for (int k = 0; k < 9; k++)
-        {
+    for (int i = 0; i < 24; i++) {
+        for (int k = 0; k < 9; k++) {
             r = sqrt((x[i]-xc[k])*(x[i]-xc[k]) + (y[i]-yc[k])*(y[i]-yc[k]));
             if (r < R[k]){
                 skip[i] = 1;
                 //cout<<x[i]<<" "<<y[i]<<endl;
                 
             }
-            
         }
         if (x[i]>1){ skip[i] = 1;} // finde where to skip all uncoverd T.
-        
     }
 
     cout<< "skiping n: {";
@@ -42,21 +38,17 @@ int main()
 
     double closestTo = 100;
     double closestA, closestB;
-    for (int i = 0; i < 24; i++) {
-        
+    for (int i = 0; i < 24; i++) { 
         if (skip[i] == 0 ){
             r = sqrt((x[i]-5)*(x[i]-5) + (y[i]-10)*(y[i]-10));
             if(closestTo > r ){
                 closestTo = r;
                 closestA = x[i];
                 closestB = y[i];
-            }
-                
-        }   
-        
+            }     
+        }    
     }
     cout <<"closest to (5, 10) is: ("<<closestA<<", "<< closestB <<") with distance: "<<closestTo;
- 
 
     return 0;
 }

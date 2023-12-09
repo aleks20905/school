@@ -19,37 +19,29 @@ int main()
     double globalCount=0;
     int count = 0;
     do {
-    count = 0;
-    for (int i = 0; i < 24; i++)
-    {
-        for (int k = 0; k < 9; k++)
-        {
-            r = sqrt((x[i]-xc[k])*(x[i]-xc[k]) + (y[i]-yc[k])*(y[i]-yc[k]));
-            if (r < R[k]){
-                count++;
-                break;;
-                //cout<<x[i]<<" "<<y[i]<<endl;
-                
+        count = 0;
+        for (int i = 0; i < 24; i++) {
+            for (int k = 0; k < 9; k++) {
+                r = sqrt((x[i]-xc[k])*(x[i]-xc[k]) + (y[i]-yc[k])*(y[i]-yc[k]));
+                if (r < R[k]){
+                    count++;
+                    break;;
+                    //cout<<x[i]<<" "<<y[i]<<endl;
+                    
+                }
             }
-            
         }
-       
-        
-    }
-    if (count>globalCount){
-        globalCount = count; 
-        copy(R,R+9,tempR);
-    } 
+        if (count>globalCount){
+            globalCount = count; 
+            copy(R,R+9,tempR);
+        } 
 
-    
     //cout<<"pokriti: "<<count<<endl;
     }while(next_permutation(R, R+9));
 
     cout<<"global count: "<<globalCount<<endl;
-
     cout<<"tempR : ";
-    for (int i = 0; i < 9; i++)
-    {
+    for (int i = 0; i < 9; i++){
         cout<< tempR[i]<<" ";
     }
     cout<<endl;
