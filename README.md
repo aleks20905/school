@@ -1,6 +1,7 @@
 # * School projects or projects be shared fast&easy *
 
-# for C++ code i mainly use "gcc" to run code : so if u have any problem try to change the compiler
+# for C++ code i mainly use "gcc" to run code 
+> so if u have any problem try to change the compiler
 ```bash
 $ g++ <program.cpp> -o <program>
 ```
