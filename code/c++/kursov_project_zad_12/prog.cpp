@@ -255,7 +255,7 @@ int main() {
         switch (choice) {
             case 1: showCitizen(citizens, numCitizens);break;  
             case 2: showOldestPerson(citizens, numCitizens);break;
-            case 3: showHighestAverageSalary(citizens, numCitizens);break;
+            case 3: showHighestAverageSalaryByProfession(citizens, numCitizens);break;
             case 4: showCitizensByEducation(citizens, numCitizens); break;
             case 5: sortByAge(citizens, numCitizens); break;
             case 6: showCitizensByProfession(citizens, numCitizens);break;
