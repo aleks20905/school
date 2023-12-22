@@ -54,7 +54,7 @@ void showOldestPerson(Citizen citizens[], int count) {
     }
 }
 
-void showHighestAverageSalary(Citizen citizens[], int count) {
+void showHighestAverageSalaryByProfession(Citizen citizens[], int count) {
     map<Citizen::Profession, pair<int, int>> professionSalaryMap; // Map to store total salary and count for each profession
 
     for (int i = 0; i < count; ++i) {
@@ -194,7 +194,7 @@ void showMenu() {
     cout << "Menu:\n";
     cout << "1. Show all citizens\n";
     cout << "2. Show the oldest person\n";
-    cout << "3. Find the highest average salary\n";
+    cout << "3. Show the highest average salary by profession\n";
     cout << "4. Show citizens by education\n";
     cout << "5. Sort citizens by age\n";
     cout << "6. Show citizens by profession\n";
