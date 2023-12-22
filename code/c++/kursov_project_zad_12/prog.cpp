@@ -4,30 +4,26 @@
 using namespace std;
 
 struct Citizen {
-    char name[50];
+    char name[50]; // firstName secondName
     int age;
     int yearlySalary;
     char education[30];
     enum Profession { SALES_PERSON, DRIVER, DOCTOR, ARMY, TRANSLATOR };
     Profession profession;
 };
+void showEducationMenu();
+void showProfessionMenu();
+
 string getProfessionName(Citizen::Profession profession) {
     switch (profession) {
-        case Citizen::SALES_PERSON:
-            return "Sales Person";
-        case Citizen::DRIVER:
-            return "Driver";
-        case Citizen::DOCTOR:
-            return "Doctor";
-        case Citizen::ARMY:
-            return "Army";
-        case Citizen::TRANSLATOR:
-            return "Translator";
-        default:
-            return "Unknown Profession";
+        case Citizen::SALES_PERSON: return "Sales Person";
+        case Citizen::DRIVER: return "Driver";
+        case Citizen::DOCTOR: return "Doctor";
+        case Citizen::ARMY: return "Army";
+        case Citizen::TRANSLATOR: return "Translator";
+        default: return "Unknown Profession";
     }
 }
-
 
 void showCitizen(Citizen citizens[], int count) {
     cout << "Entered data for citizens:" << endl;
@@ -37,7 +33,6 @@ void showCitizen(Citizen citizens[], int count) {
              << ", Profession: " << getProfessionName(citizens[i].profession) << endl;
     }
 }
-
 
 void showOldestPerson(Citizen citizens[], int count) {
     int oldestAge = -1;
@@ -59,7 +54,7 @@ void showOldestPerson(Citizen citizens[], int count) {
     }
 }
 
-void findHighestAverageSalary(Citizen citizens[], int count) {
+void showHighestAverageSalary(Citizen citizens[], int count) {
     map<Citizen::Profession, pair<int, int>> professionSalaryMap; // Map to store total salary and count for each profession
 
     for (int i = 0; i < count; ++i) {
@@ -82,7 +77,8 @@ void findHighestAverageSalary(Citizen citizens[], int count) {
     cout << "\nThe profession with the highest average salary is " << getProfessionName(highestProfession)
          << " with an average salary of $" << highestAverage << endl;
 }
-void showCitizensByProfession(Citizen citizens[], int count, Citizen::Profession profession) {
+
+void getCitizensByProfession(Citizen citizens[], int count, Citizen::Profession profession) {
     cout << "Citizens with Profession " << getProfessionName(profession) << ":" << endl;
     bool found = false;
 
@@ -98,7 +94,28 @@ void showCitizensByProfession(Citizen citizens[], int count, Citizen::Profession
         cout << "No citizens found with this profession." << endl;
     }
 }
-void showCitizensByEducation(Citizen citizens[], int count, const char* education) {
+void showCitizensByProfession(Citizen citizens[], int numCitizens ){
+    showProfessionMenu();
+    int professionChoice;
+    cin >> professionChoice;
+    // Call showCitizensByProfession based on professionChoice
+    if (professionChoice == 1) {
+        getCitizensByProfession(citizens, numCitizens, Citizen::SALES_PERSON);
+    } else if (professionChoice == 2) {
+        getCitizensByProfession(citizens, numCitizens, Citizen::DRIVER);
+    } else if (professionChoice == 3) {
+        getCitizensByProfession(citizens, numCitizens, Citizen::DOCTOR);
+    } else if (professionChoice == 4) {
+        getCitizensByProfession(citizens, numCitizens, Citizen::ARMY);
+    } else if (professionChoice == 5) {
+        getCitizensByProfession(citizens, numCitizens, Citizen::TRANSLATOR);
+    } else {
+        cout << "Invalid profession choice.\n";
+    }
+
+}
+
+void getCitizensByEducation(Citizen citizens[], int count, const char* education) {
     cout << "Citizens with Education " << education << ":" << endl;
     bool found = false;
 
@@ -115,6 +132,22 @@ void showCitizensByEducation(Citizen citizens[], int count, const char* educatio
         cout << "No citizens found with this education." << endl;
     }
 }
+void showCitizensByEducation(Citizen citizens[], int numCitizens  ){
+    showEducationMenu();
+    int educationChoice;
+    cin >> educationChoice;
+    if (educationChoice == 1) {
+        getCitizensByEducation(citizens, numCitizens, "Bachelor's");
+    } else if (educationChoice == 2) {
+        getCitizensByEducation(citizens, numCitizens, "Master's");
+    } else if (educationChoice == 3) {
+        getCitizensByEducation(citizens, numCitizens, "Doctorate");
+    } else {
+        cout << "Invalid education choice.\n";
+    }
+
+}
+
 void sortByAge(Citizen citizens[], int count) {
     for (int i = 0; i < count - 1; ++i) {
         for (int j = 0; j < count - i - 1; ++j) {
@@ -127,6 +160,7 @@ void sortByAge(Citizen citizens[], int count) {
         }
     }
 }
+
 void showEducationWithLowestSalary(Citizen citizens[], int count) {
     map<string, int> lowestSalaryByEducation;
 
@@ -162,10 +196,40 @@ void showEducationWithLowestSalary(Citizen citizens[], int count) {
     cout << "Education with the lowest salary is: " << lowestEducation << " with a lowest salary of $" << lowestSalary << endl;
 }
 
-
+void showMenu() {
+    cout << " ############################################################################\n\n";
+    cout << "Menu:\n";
+    cout << "1. Show all citizens\n";
+    cout << "2. Show the oldest person\n";
+    cout << "3. Find the highest average salary\n";
+    cout << "4. Show citizens by education\n";
+    cout << "5. Sort citizens by age\n";
+    cout << "6. Show citizens by profession\n";
+    cout << "7. Show education with lowest salary\n";
+    cout << "0. Exit\n";
+    cout << "Enter your choice: ";
+}
+void showEducationMenu() {
+    cout << " ############################################################################\n\n";
+    cout << "Education Levels:\n";
+    cout << "1. Bachelor's\n";
+    cout << "2. Master's\n";
+    cout << "3. Doctorate\n";
+    cout << "Enter education level choice: ";
+}
+void showProfessionMenu() {
+    cout << "Professions:\n";
+    cout << "1. Sales Person\n";
+    cout << "2. Driver\n";
+    cout << "3. Doctor\n";
+    cout << "4. Army\n";
+    cout << "5. Translator\n";
+    cout << "Enter profession choice: ";
+}
 
 int main() {
-    Citizen citizens[6] = {
+    int numCitizens;
+    Citizen citizens[] = {
         {"Alice", 30, 50000, "Bachelor's", Citizen::SALES_PERSON},
         {"Bob", 25, 60000, "Master's", Citizen::DRIVER},
         {"Charlie", 35, 70000, "PhD", Citizen::DOCTOR},
@@ -173,23 +237,42 @@ int main() {
         {"Eva", 28, 55000, "Master's", Citizen::DOCTOR},
         {"Frank", 32, 65000, "PhD", Citizen::TRANSLATOR}
     };
+    numCitizens = sizeof(citizens)/sizeof(Citizen);  
 
+/*
     showCitizen(citizens, 6);
 
     showOldestPerson(citizens, 6);
 
-    findHighestAverageSalary(citizens, 6);
+    showHighestAverageSalary(citizens, 6);
 
     showCitizensByEducation(citizens, 6, "Bachelor's");
 
     sortByAge(citizens, 6);
 
-    showCitizensByProfession(citizens, 6, Citizen::DOCTOR);
+    getCitizensByProfession(citizens, 6, Citizen::DOCTOR);
 
     showEducationWithLowestSalary(citizens, 6);
 
+*/
+    int choice;
+    do {
+        showMenu();
+        cin >> choice;
+        switch (choice) {
+            case 1: showCitizen(citizens, numCitizens);break;  
+            case 2: showOldestPerson(citizens, numCitizens);break;
+            case 3: showHighestAverageSalary(citizens, numCitizens);break;
+            case 4: showCitizensByEducation(citizens, numCitizens); break;
+            case 5: sortByAge(citizens, numCitizens); break;
+            case 6: showCitizensByProfession(citizens, numCitizens);break;
+            case 7: showEducationWithLowestSalary(citizens, numCitizens); break;
+            case 0: cout << "Exiting...\n"; break;
 
-    
+            default: cout << "Invalid choice. Please enter a valid option.\n";
+                break;
+        }
+    } while (choice != 0);
 
 
     return 0;
