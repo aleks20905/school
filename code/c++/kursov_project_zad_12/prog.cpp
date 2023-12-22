@@ -98,20 +98,15 @@ void showCitizensByProfession(Citizen citizens[], int numCitizens ){
     showProfessionMenu();
     int professionChoice;
     cin >> professionChoice;
-    // Call showCitizensByProfession based on professionChoice
-    if (professionChoice == 1) {
-        getCitizensByProfession(citizens, numCitizens, Citizen::SALES_PERSON);
-    } else if (professionChoice == 2) {
-        getCitizensByProfession(citizens, numCitizens, Citizen::DRIVER);
-    } else if (professionChoice == 3) {
-        getCitizensByProfession(citizens, numCitizens, Citizen::DOCTOR);
-    } else if (professionChoice == 4) {
-        getCitizensByProfession(citizens, numCitizens, Citizen::ARMY);
-    } else if (professionChoice == 5) {
-        getCitizensByProfession(citizens, numCitizens, Citizen::TRANSLATOR);
-    } else {
-        cout << "Invalid profession choice.\n";
+    switch (professionChoice) {
+        case 1: getCitizensByProfession(citizens, numCitizens, Citizen::SALES_PERSON); break;
+        case 2: getCitizensByProfession(citizens, numCitizens, Citizen::DRIVER); break;
+        case 3: getCitizensByProfession(citizens, numCitizens, Citizen::DOCTOR); break;
+        case 4: getCitizensByProfession(citizens, numCitizens, Citizen::ARMY); break;
+        case 5: getCitizensByProfession(citizens, numCitizens, Citizen::TRANSLATOR); break;
+        default: cout << "Invalid profession choice.\n"; break;
     }
+
 
 }
 
@@ -136,15 +131,13 @@ void showCitizensByEducation(Citizen citizens[], int numCitizens  ){
     showEducationMenu();
     int educationChoice;
     cin >> educationChoice;
-    if (educationChoice == 1) {
-        getCitizensByEducation(citizens, numCitizens, "Bachelor's");
-    } else if (educationChoice == 2) {
-        getCitizensByEducation(citizens, numCitizens, "Master's");
-    } else if (educationChoice == 3) {
-        getCitizensByEducation(citizens, numCitizens, "Doctorate");
-    } else {
-        cout << "Invalid education choice.\n";
+    switch (educationChoice) {
+        case 1: getCitizensByEducation(citizens, numCitizens, "Bachelor's"); break;
+        case 2: getCitizensByEducation(citizens, numCitizens, "Master's"); break;
+        case 3: getCitizensByEducation(citizens, numCitizens, "Doctorate"); break;
+        default: cout << "Invalid education choice.\n"; break;
     }
+
 
 }
 
