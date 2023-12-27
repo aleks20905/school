@@ -221,7 +221,7 @@ void showProfessionMenu() {
 }
 
 int main() {
-    int numCitizens;
+    
     Citizen citizens[] = {
         {"Alice", 30, 50000, "Bachelor's", Citizen::SALES_PERSON},
         {"Bob", 25, 60000, "Master's", Citizen::DRIVER},
@@ -230,7 +230,7 @@ int main() {
         {"Eva", 28, 55000, "Master's", Citizen::DOCTOR},
         {"Frank", 32, 65000, "PhD", Citizen::TRANSLATOR}
     };
-    numCitizens = sizeof(citizens)/sizeof(Citizen);  
+    int numCitizens = sizeof(citizens)/sizeof(Citizen);  
 
 /*
     showCitizen(citizens, 6);
