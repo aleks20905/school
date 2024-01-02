@@ -228,8 +228,23 @@ int main() {
         {"Charlie", 35, 70000, "PhD", Citizen::DOCTOR},
         {"David", 40, 80000, "Bachelor's", Citizen::SALES_PERSON},
         {"Eva", 28, 55000, "Master's", Citizen::DOCTOR},
-        {"Frank", 32, 65000, "PhD", Citizen::TRANSLATOR}
+        {"Frank", 32, 65000, "PhD", Citizen::TRANSLATOR},
+        {"Grace", 27, 48000, "Bachelor's", Citizen::SALES_PERSON},
+        {"Henry", 45, 90000, "Master's", Citizen::ARMY},
+        {"Ivy", 33, 72000, "PhD", Citizen::TRANSLATOR},
+        {"Jack", 29, 58000, "Master's", Citizen::DRIVER},
+        {"Katie", 31, 68000, "Bachelor's", Citizen::DOCTOR},
+        {"Liam", 36, 75000, "Master's", Citizen::SALES_PERSON},
+        {"Mia", 26, 52000, "Bachelor's", Citizen::TRANSLATOR},
+        {"Noah", 38, 82000, "PhD", Citizen::ARMY},
+        {"Olivia", 24, 47000, "Bachelor's", Citizen::DOCTOR},
+        {"Peter", 42, 87000, "Master's", Citizen::SALES_PERSON},
+        {"Quinn", 30, 59000, "Bachelor's", Citizen::TRANSLATOR},
+        {"Rachel", 34, 73000, "PhD", Citizen::DOCTOR},
+        {"Samuel", 37, 79000, "Master's", Citizen::ARMY},
+        {"Tina", 23, 45000, "Bachelor's", Citizen::SALES_PERSON}
     };
+
     int numCitizens = sizeof(citizens)/sizeof(Citizen);  
 
 /*
