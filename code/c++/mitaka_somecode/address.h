@@ -1,4 +1,4 @@
-#ifdef ADDRESS_H
+#ifndef ADDRESS_H
 #define ADDRESS_H
 
 #include <iostream>
@@ -13,20 +13,20 @@ public:
   string regionArg="Карлово", 
   string cityArg="Калофер",
   string streetArg="Христо Ботев",
-  unsunsigned int postCodeArg = 4370)
+  unsigned int postCodeArg = 4370)
   {
     name = nameArg ;
     region = regionArg; 
     city = cityArg;
     street = streetArg;
-    postCode = postCodeArg;)
-  };
+    postCode = postCodeArg;
+  }
 
   void setName(string in){name = in;}
   void setRegion(string in){region = in;}
   void setCity(string in){city = in;}
   void setStreet(string in){street = in;}
-  void setPostCode(unsunsigned int in){postCode = in;}
+  void setPostCode(unsigned int in){postCode = in;}
 
   void getName(){cout << name;}
   void getRegion(){cout << region;}
