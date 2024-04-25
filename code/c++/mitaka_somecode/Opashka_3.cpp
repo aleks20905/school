@@ -17,12 +17,13 @@
 
 using namespace std;
 
-class Exception{
-  string in;
+class Exception {
+    string in;
 public:
-  Exception(){ in = "празна грешка";}
-  Exception(string s) {in = s;}
-  string get_text() const { return in;  }
+    Exception() { in = "празна грешка"; }
+    Exception(string s) : in(s) {}
+
+    string get_text() const { return in; }
 };
 
 // Създаване на обобщен клас queue, ползващ обобщен тип QType
@@ -40,13 +41,14 @@ public:
   void qput(QType i);
   QType qget();
   QType inputData();
+  void printData();
   int getCurrentSize() { return count;}// строго казано, не е необходима
 };
 
 // Поставяме обекта в опашката.
 template <typename QType> 
 void queue<QType>::qput(QType i){
-  if(count == size) {throw Exception("Опашката е запълнена!\n\n");}
+  if(count == size) {throw Exception("Опашката е запълнена");}
   q[sloc++] = i;
   if (sloc == size) sloc = 0; //  превърти, ако е преминат края на масива
   count++;
@@ -55,7 +57,7 @@ void queue<QType>::qput(QType i){
 template <typename QType> 
 QType queue<QType>::qget(){// Извличане на обекта от опашката.
   QType buf;
-  if (count == 0) { throw Exception("Опашката е празна!\n");}
+  if (count == 0) { throw Exception("Опашката е празна!");}
   count--;
   if (rloc == size){rloc = 0;} //превърти, ако е преминат края на масива
   return q[rloc++];
@@ -103,19 +105,26 @@ address queue<address>::inputData(){
 
   cout << "Въведете пощенски код: ";
 	getline(cin, buf);
-  address.setPostCode(atoi(buf));
+  address.setPostCode(stoi(buf));
 
 	return buf; //
 }
 template <> 
-address queue<address>::printData(){
+void queue<address>::printData(){
+
+  if (count == 0) {	
+    if (count == 0) { throw Exception("Опашката е празна!");}
+    //cout << "Опашката е празна!\n"; 
+    return;
+  }
   
-  address address;
-  cout << address.getName()<<endl;
-  cout << address.getRegion()<<endl;
-  cout << address.getCity()<<endl;
-  cout << address.getStreet()<<endl;
-  cout << address.getPostCode()<<endl;
+  address obj = q[rloc];
+    cout << "Name: " << obj.getName() << endl;
+    cout << "Street: " << obj.getStreet() << endl;
+    cout << "City: " << obj.getCity() << endl;
+    cout << "Region: " << obj.getRegion() << endl;
+    cout << "Zip: " << obj.getPostCode() << endl;
+    cout << endl;
 }
 
 int main(){
@@ -128,7 +137,7 @@ int main(){
   cout << "__cplusplus = " << __cplusplus << endl;
 
   cout << "В опашката има " << myq.getCurrentSize() << " елемента." << endl;
-  cout << myq.qget() << " "<< endl; //опит за четене от празна опашка
+  //cout << myq.qget() << " "<< endl; //опит за четене от празна опашка
   
   char choice;
   do {
@@ -140,11 +149,11 @@ int main(){
       	myq.qput(myq.inputData());
       }
       if(choice == 'i'|| choice == 'I'){
-      	cout << myq.qget() << endl;
+      	myq.printData();
       }
     }
-    catch(Exception& e){
-      return e;
+    catch (Exception& e) {
+      cout << "error :  " << e.get_text() << endl;
     }
   } while (choice != 'K'  && choice != 'k');
 }

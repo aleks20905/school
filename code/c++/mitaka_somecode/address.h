@@ -28,11 +28,11 @@ public:
   void setStreet(string in){street = in;}
   void setPostCode(unsigned int in){postCode = in;}
 
-  void getName(){cout << name;}
-  void getRegion(){cout << region;}
-  void getCity(){cout << city;}
-  void getStreet(){cout << street;}
-  void getPostCode(){cout << postCode;}
+  string getName(){return name;}
+  string getRegion(){return region;}
+  string getCity(){return city;}
+  string getStreet(){return street;}
+  unsigned int getPostCode(){return postCode;}
 };
 
 #endif
