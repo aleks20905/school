@@ -27,15 +27,12 @@ void iterateAndPlace(double val) {
         if (node->val > 99999) {
             break;
         }
-
         prev = node;
         node = node->next;
     }
 
-    while (node != nullptr) {
+    if (prev != nullptr) {
         prev->val = val;
-        prev = node;
-        node = node->next;
     }
 }
 
@@ -45,7 +42,7 @@ int main() {
 
     for (int i = 0; i < 3000; i++) {
         Node* newNode = new Node;
-        newNode->val = 0.0; 
+        newNode->val = 0.0;
         newNode->next = nodes;
         nodes = newNode;
     }
