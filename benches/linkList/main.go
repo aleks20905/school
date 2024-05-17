@@ -32,10 +32,13 @@ func main() {
 	x := Node{}
 	fmt.Printf("Size of struct: %d\n", unsafe.Sizeof(x)) // 16 bytes
 
+	initialValue := 0.0
 	for i := 0; i < 3000; i++ {
 		newNode := new(Node)
 		newNode.next = nodes
+		newNode.val = initialValue
 		nodes = newNode
+		initialValue += 1
 	}
 
 	for retrys := 50; retrys < 1000000; retrys += int(float32(retrys) * 0.15) {

@@ -31,12 +31,13 @@ int main() {
     Node x = {};
     cout << "Size of struct: " << sizeof(x) << "\n"; // 16 bytes
 
-    // Fill in global linked list with 3000 dummy nodes
-    for (int i=0; i<3000; i++) {
+   float initialValue = 0.0;
+    for (int i = 0; i < 3000; i++) {
         Node* newNode = new Node;
-        newNode->val = 0.0;
+        newNode->val = initialValue; 
         newNode->next = nodes;
         nodes = newNode;
+        initialValue += 1; 
     }
 
     for (int retrys = 50; retrys < 1000000; retrys+=retrys*0.15) {
