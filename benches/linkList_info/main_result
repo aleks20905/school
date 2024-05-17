@@ -1,0 +1,158 @@
+не успях да намеря тотален еквивалент за кажа точно колко е cpu util или да кажа дали
+не съм и сигурен дали time дали няма някакви оптимизации зад него така също не съм сигурен 
+
+
+при използване на ръчен начин на извличане на пеметта Time:       0 ms Memory Usage:    151120 bytes 
+Time:       0 ms Memory Usage:    151216 bytes 
+Time:       0 ms Memory Usage:    151232 bytes 
+Time:       0 ms Memory Usage:    151248 bytes 
+Time:       0 ms Memory Usage:    151264 bytes 
+Time:       0 ms Memory Usage:    151280 bytes 
+Time:       0 ms Memory Usage:    151296 bytes 
+Time:       0 ms Memory Usage:    151312 bytes 
+Time:       0 ms Memory Usage:    151328 bytes 
+Time:       0 ms Memory Usage:    151344 bytes 
+Time:       0 ms Memory Usage:    151360 bytes 
+Time:       1 ms Memory Usage:    151376 bytes 
+Time:       1 ms Memory Usage:    151392 bytes 
+Time:       1 ms Memory Usage:    151408 bytes 
+Time:       1 ms Memory Usage:    151704 bytes 
+Time:       1 ms Memory Usage:    151720 bytes 
+Time:       2 ms Memory Usage:    151736 bytes 
+Time:       2 ms Memory Usage:    151752 bytes 
+Time:       2 ms Memory Usage:    151768 bytes 
+Time:       3 ms Memory Usage:    151784 bytes 
+Time:       3 ms Memory Usage:    151800 bytes 
+Time:       4 ms Memory Usage:    151816 bytes 
+Time:       4 ms Memory Usage:    151832 bytes 
+Time:       5 ms Memory Usage:    151848 bytes 
+Time:       6 ms Memory Usage:    151864 bytes 
+Time:       7 ms Memory Usage:    151880 bytes 
+Time:       9 ms Memory Usage:    151896 bytes 
+Time:       9 ms Memory Usage:    151912 bytes 
+Time:      11 ms Memory Usage:    151928 bytes 
+Time:      12 ms Memory Usage:    151944 bytes 
+Time:      15 ms Memory Usage:    151960 bytes 
+Time:      16 ms Memory Usage:    151976 bytes 
+Time:      18 ms Memory Usage:    151992 bytes 
+Time:      22 ms Memory Usage:    152008 bytes 
+Time:      25 ms Memory Usage:    152024 bytes 
+Time:      28 ms Memory Usage:    152040 bytes 
+Time:      33 ms Memory Usage:    152056 bytes 
+Time:      38 ms Memory Usage:    152072 bytes 
+Time:      43 ms Memory Usage:    152088 bytes 
+Time:      50 ms Memory Usage:    152104 bytes 
+Time:      55 ms Memory Usage:    152120 bytes 
+Time:      65 ms Memory Usage:    152136 bytes 
+Time:      72 ms Memory Usage:    152152 bytes 
+Time:      83 ms Memory Usage:    152168 bytes 
+Time:      93 ms Memory Usage:    152184 bytes 
+Time:     106 ms Memory Usage:    152200 bytes 
+Time:     121 ms Memory Usage:    152216 bytes 
+Time:     138 ms Memory Usage:    152232 bytes 
+Time:     160 ms Memory Usage:    152248 bytes 
+Time:     182 ms Memory Usage:    152264 bytes 
+Time:     216 ms Memory Usage:    152280 bytes 
+Time:     243 ms Memory Usage:    152296 bytes 
+Time:     277 ms Memory Usage:    152312 bytes 
+Time:     323 ms Memory Usage:    152328 bytes 
+Time:     371 ms Memory Usage:    152344 bytes 
+Time:     418 ms Memory Usage:    152360 bytes 
+Time:     490 ms Memory Usage:    152376 bytes 
+Time:     557 ms Memory Usage:    152392 bytes 
+Time:     643 ms Memory Usage:    152408 bytes 
+Time:     738 ms Memory Usage:    152424 bytes 
+Time:     899 ms Memory Usage:    152440 bytes 
+Time:    1023 ms Memory Usage:    152456 bytes 
+Time:    1133 ms Memory Usage:    152472 bytes 
+Time:    1379 ms Memory Usage:    152488 bytes 
+Time:    1729 ms Memory Usage:    152504 bytes 
+Time:    1729 ms Memory Usage:    152520 bytes 
+Time:    2181 ms Memory Usage:    152536 bytes 
+Time:    2277 ms Memory Usage:    152552 bytes 
+Time:    2637 ms Memory Usage:    152568 bytes 
+Time:    3037 ms Memory Usage:    152584 bytes 
+Time:    3521 ms Memory Usage:    152600 bytes 
+Time:    3931 ms Memory Usage:    152616 bytes 
+
+
+
+
+при извилизвличане чрез runtime/pprof // данните да доста по висока защото сама библиотека е доста голяма и вклюва много неща 
+
+
+Time:       0 ms | Memory Usage:   1343536 memoryUsage 
+Time:       0 ms | Memory Usage:   1344856 memoryUsage 
+Time:       0 ms | Memory Usage:   1344872 memoryUsage 
+Time:       0 ms | Memory Usage:   1344888 memoryUsage 
+Time:       0 ms | Memory Usage:   1344904 memoryUsage 
+Time:       0 ms | Memory Usage:   1344920 memoryUsage 
+Time:       0 ms | Memory Usage:   1344936 memoryUsage 
+Time:       0 ms | Memory Usage:   1344952 memoryUsage 
+Time:       0 ms | Memory Usage:   1344968 memoryUsage 
+Time:       0 ms | Memory Usage:   1344984 memoryUsage 
+Time:       0 ms | Memory Usage:   1345000 memoryUsage 
+Time:       0 ms | Memory Usage:   1345016 memoryUsage 
+Time:       1 ms | Memory Usage:   1345032 memoryUsage 
+Time:       1 ms | Memory Usage:   1345048 memoryUsage 
+Time:       1 ms | Memory Usage:   1345064 memoryUsage 
+Time:       1 ms | Memory Usage:   1345080 memoryUsage 
+Time:       1 ms | Memory Usage:   1345096 memoryUsage 
+Time:       2 ms | Memory Usage:   1345112 memoryUsage 
+Time:       2 ms | Memory Usage:   1345128 memoryUsage 
+Time:       3 ms | Memory Usage:   1345144 memoryUsage 
+Time:       3 ms | Memory Usage:   1345160 memoryUsage 
+Time:       4 ms | Memory Usage:   1345176 memoryUsage 
+Time:       4 ms | Memory Usage:   1345192 memoryUsage 
+Time:       6 ms | Memory Usage:   1345584 memoryUsage 
+Time:       6 ms | Memory Usage:   1345600 memoryUsage 
+Time:       7 ms | Memory Usage:   1345616 memoryUsage 
+Time:       8 ms | Memory Usage:   1345632 memoryUsage 
+Time:      10 ms | Memory Usage:   1345648 memoryUsage 
+Time:      11 ms | Memory Usage:   1345664 memoryUsage 
+Time:      13 ms | Memory Usage:   1362264 memoryUsage 
+Time:      15 ms | Memory Usage:   1362280 memoryUsage 
+Time:      19 ms | Memory Usage:   1362296 memoryUsage 
+Time:      20 ms | Memory Usage:   1362312 memoryUsage 
+Time:      23 ms | Memory Usage:   1362328 memoryUsage 
+Time:      25 ms | Memory Usage:   1362344 memoryUsage 
+Time:      29 ms | Memory Usage:   1362360 memoryUsage 
+Time:      33 ms | Memory Usage:   1362376 memoryUsage 
+Time:      38 ms | Memory Usage:   1362392 memoryUsage 
+Time:      44 ms | Memory Usage:   1362408 memoryUsage 
+Time:      51 ms | Memory Usage:   1362424 memoryUsage 
+Time:      57 ms | Memory Usage:   1362440 memoryUsage 
+Time:      66 ms | Memory Usage:   1362456 memoryUsage 
+Time:      73 ms | Memory Usage:   1362472 memoryUsage 
+Time:      84 ms | Memory Usage:   1362488 memoryUsage 
+Time:      93 ms | Memory Usage:   1362504 memoryUsage 
+Time:     107 ms | Memory Usage:   1362520 memoryUsage 
+Time:     121 ms | Memory Usage:   1362536 memoryUsage 
+Time:     138 ms | Memory Usage:   1362552 memoryUsage 
+Time:     158 ms | Memory Usage:   1362568 memoryUsage 
+Time:     182 ms | Memory Usage:   1362584 memoryUsage 
+Time:     217 ms | Memory Usage:   1362600 memoryUsage 
+Time:     241 ms | Memory Usage:   1362616 memoryUsage 
+Time:     275 ms | Memory Usage:   1362632 memoryUsage 
+Time:     318 ms | Memory Usage:   1362648 memoryUsage 
+Time:     371 ms | Memory Usage:   1362664 memoryUsage 
+Time:     417 ms | Memory Usage:   1362680 memoryUsage 
+Time:     491 ms | Memory Usage:   1362696 memoryUsage 
+Time:     554 ms | Memory Usage:   1362712 memoryUsage 
+Time:     645 ms | Memory Usage:   1362728 memoryUsage 
+Time:     742 ms | Memory Usage:   1362744 memoryUsage 
+Time:     831 ms | Memory Usage:   1362768 memoryUsage 
+Time:     958 ms | Memory Usage:   1363176 memoryUsage 
+Time:    1121 ms | Memory Usage:   1363192 memoryUsage 
+Time:    1267 ms | Memory Usage:   1363496 memoryUsage 
+Time:    1456 ms | Memory Usage:   1363512 memoryUsage 
+Time:    1681 ms | Memory Usage:   1363528 memoryUsage 
+Time:    2019 ms | Memory Usage:   1363544 memoryUsage 
+Time:    2528 ms | Memory Usage:   1364208 memoryUsage 
+Time:    2630 ms | Memory Usage:   1364224 memoryUsage 
+Time:    3107 ms | Memory Usage:   1364240 memoryUsage 
+Time:    3431 ms | Memory Usage:   1364256 memoryUsage 
+Time:    4006 ms | Memory Usage:   1364272 memoryUsage 
+
+
+
