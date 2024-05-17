@@ -3,6 +3,7 @@
         "*html": "html",
         "ostream": "cpp",
         "iosfwd": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "chrono": "cpp"
     }
 }
