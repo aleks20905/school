@@ -17,7 +17,6 @@ void iterateAndAdd(double i) {
         node->val += i;
         node = node->next;
     }
-
 }
 
 void iterateAndPlace(double val) {
@@ -32,16 +31,17 @@ void iterateAndPlace(double val) {
         prev = node;
         node = node->next;
     }
+
     while (node != nullptr) {
         prev->val = val;
+        prev = node;
+        node = node->next;
     }
-   
 }
 
 int main() {
     Node x = {};
     cout << "Size of struct: " << sizeof(x) << "\n"; // 16 bytes
-
 
     for (int i = 0; i < 3000; i++) {
         Node* newNode = new Node;
@@ -51,16 +51,14 @@ int main() {
     }
 
     auto start = chrono::steady_clock::now();
-    for (int i=0; i<100000; i++) {
+    for (int i = 0; i < 100000; i++) {
         iterateAndPlace(100.1);
         iterateAndAdd(i);
     }
 
     auto end = chrono::steady_clock::now();
     auto diff = end - start;
-    // cout <<"size : "<<retrys<<" \t time :  "<< chrono::duration_cast<ms>(diff).count()<<" ms "<<endl;
-    cout << chrono::duration_cast<ms>(diff).count()<<endl;
+    cout << chrono::duration_cast<ms>(diff).count() << " ms" << endl;
 
-       
-    
-}       
+    return 0;
+}
