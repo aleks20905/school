@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"os"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -30,9 +31,10 @@ func (p *Player) MoveTo(cord []Coordinate) []Coordinate {
 
 	var directions []Coordinate
 	prevCoord := cord[0]
+
 	for i := range cord {
 		currCoord := cord[i]
-		dx := currCoord.x - prevCoord.x
+		dx := currCoord.x - prevCoord.x //нарочно да е малко по бавно
 		dy := currCoord.y - prevCoord.y
 		dz := currCoord.z - prevCoord.z
 		direction := Coordinate{dx, dy, dz}
@@ -49,6 +51,7 @@ func (p *Player) MoveToOffset(cord []Coordinate, offset float64) []Coordinate {
 
 	var directions []Coordinate
 	prevCoord := cord[0]
+
 	for i := range cord {
 		currCoord := cord[i]
 		dx := currCoord.x - prevCoord.x + offset
@@ -111,6 +114,12 @@ func ReadAndParseFile() ([]Coordinate, error) {
 	return coordinates, nil
 }
 
+func printMemoryUsage() {
+	var m runtime.MemStats
+	runtime.ReadMemStats(&m)
+	fmt.Printf("Memory Usage: %v KB\n", m.Alloc/1024)
+}
+
 func main() {
 
 	coordinates, err := ReadAndParseFile()
@@ -124,22 +133,24 @@ func main() {
 	for i := range 100 {
 
 		player := NewPlayer()
-		// 2959 ms
 		directions := player.MoveTo(coordinates)
-		distanceTraveled := player.CalculateDistanceFromDirections(directions)
-		fmt.Printf("Distance Traveled: %f \n", distanceTraveled)
+		_ = player.CalculateDistanceFromDirections(directions)
+		//fmt.Printf("Distance Traveled: %f \n", distanceTraveled)
 
 		directions = player.MoveToOffset(coordinates, float64(i))
-		distanceTraveled = player.CalculateDistanceFromDirections(directions)
-		fmt.Printf("Distance Traveled: %f \n", distanceTraveled)
+		_ = player.CalculateDistanceFromDirections(directions)
+		//fmt.Printf("Distance Traveled: %f \n", distanceTraveled)
 
-		// 2719 ms
 		// directions := player.MoveTo(coordinates)
 		// _ = player.CalculateDistanceFromDirections(directions)
 
 		// directions = player.MoveToOffset(coordinates, float64(i))
 		// _ = player.CalculateDistanceFromDirections(directions)
 	}
-	fmt.Println("Time taken: ", time.Since(start).Milliseconds())
+	fmt.Printf("Time taken: %v ms \n", time.Since(start).Milliseconds())
 
+	printMemoryUsage()
+
+	// Time taken: 8014 ms
+	// Memory Usage: 75972 KB
 }
