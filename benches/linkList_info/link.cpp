@@ -36,7 +36,7 @@ size_t getMemoryUsage() {
     ifstream file("/proc/self/statm");
     if (!file.is_open()) {
         cerr << "Error: Could not open /proc/self/statm" << endl;
-        return;
+        return 0;
     }
     long size, resident, share, text, lib, data, dt;
     file >> size >> resident >> share >> text >> lib >> data >> dt;
@@ -45,7 +45,7 @@ size_t getMemoryUsage() {
     long pageSize = sysconf(_SC_PAGESIZE); // In bytes 
     long residentSize = resident * pageSize;
 
-    return residentSize ;
+    return residentSize;
 }
 
 int main() {
@@ -53,7 +53,7 @@ int main() {
     cout << "Size of struct: " << sizeof(x) << "\n";
 
     float initialValue = 0.0;
-    for (int i = 0; i < 3000; i++) {
+    for (int i = 0; i < 6000; i++) {
         Node* newNode = new Node;
         newNode->val = initialValue;
         newNode->next = nodes;
@@ -61,6 +61,7 @@ int main() {
         initialValue += 1.0;
     }
 
+    
     for (int retrys = 50; retrys < 1000000; retrys += retrys * 0.15) {
         auto start = chrono::steady_clock::now();
         clock_t cpu_start = clock();
