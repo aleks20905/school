@@ -58,6 +58,7 @@ func calNode(n int) {
 		iterateAndAdd(float64(i) + 15.56)
 	}
 	fmt.Printf("node N:%v  %v ms mem usage: %v\n", n, time.Since(start).Milliseconds(), getMemoryUsage())
+	nodes = nil
 }
 
 func main() {

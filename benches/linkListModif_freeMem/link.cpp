@@ -74,6 +74,15 @@ void calNode(int n ){
     auto diff = end - start;
     cout <<"node N: "<<n<<" "<< chrono::duration_cast<ms>(diff).count() << " ms" << " mem usage: "<<getMemoryUsage()<< endl;
 
+    // Free the allocated memory
+    Node* current = nodes;
+    while (current != nullptr) {
+        Node* next = current->next;
+        delete current;
+        current = next;
+    }
+    nodes = nullptr; // reset
+
 }
 
 
