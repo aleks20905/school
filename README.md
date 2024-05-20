@@ -12,6 +12,12 @@ in the c++ code section most of the projects have executable files and u can use
 $ ./<program>
 ```
 ## Go
+>Normaly everyting will run with
+```bash
+$ go run ... .go 
+ or the alternatives for the 
+```
+ 
 >For the *Go* codes, some of projects can use "air" package and be confuse so its not necessary to have air its just easy to use it and more convenient than, manualy closeing the project and starting them again etc.
 >But if u insist u can download the air package and use it.
 >in the *AIR* repo u will find instruction on how to install and use "air" - https://github.com/cosmtrek/air 

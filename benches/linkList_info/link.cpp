@@ -33,10 +33,19 @@ void iterateAndPlace(double val) {
 }
 
 size_t getMemoryUsage() {
-    ifstream statm("/proc/self/statm");
-    size_t size;
-    statm >> size;
-    return size * sysconf(_SC_PAGESIZE);
+    ifstream file("/proc/self/statm");
+    if (!file.is_open()) {
+        cerr << "Error: Could not open /proc/self/statm" << endl;
+        return;
+    }
+    long size, resident, share, text, lib, data, dt;
+    file >> size >> resident >> share >> text >> lib >> data >> dt;
+    file.close();
+
+    long pageSize = sysconf(_SC_PAGESIZE); // In bytes 
+    long residentSize = resident * pageSize;
+
+    return residentSize ;
 }
 
 int main() {
