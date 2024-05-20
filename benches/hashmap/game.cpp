@@ -6,13 +6,13 @@ using namespace std;
 
 
 int main() {
-    auto start = chrono::steady_clock::now();
-
+    
     unordered_map<double, double> hm;
-    double c = 0.0;
+    
+    auto start = chrono::steady_clock::now();
+    
     for (int i = 0; i < 10000000; i++) {
-        hm[c] = c + 10.0;
-        c += 1.0;
+        hm[i] = i + 10.0;
     }
 
     auto end = chrono::steady_clock::now();
@@ -21,7 +21,7 @@ int main() {
 
 
 
-// Time : 11729 ms
+// Time : 6912 ms
 
 
 }
