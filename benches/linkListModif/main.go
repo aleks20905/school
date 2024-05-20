@@ -38,10 +38,7 @@ func iterateAndPlace(val float64) {
 		prev.val = val
 	}
 }
-
-func main() {
-	x := Node{}
-	fmt.Printf("Size of struct: %d\n", unsafe.Sizeof(x)) // 16 bytes
+func calNide(n int) {
 
 	for i := 0; i < 3000; i++ {
 		newNode := new(Node)
@@ -50,9 +47,18 @@ func main() {
 	}
 
 	start := time.Now()
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < 10000; i++ {
 		iterateAndPlace(100.1)
 		iterateAndAdd(float64(i) + 15.56)
 	}
-	fmt.Printf("%v\n", time.Since(start).Milliseconds())
+	fmt.Printf("node N:%v  %v\n", n, time.Since(start))
+}
+
+func main() {
+	x := Node{}
+	fmt.Printf("Size of struct: %d\n", unsafe.Sizeof(x)) // 16 bytes
+	for i := 200; i < 10000; i += 200 {
+		calNide(i)
+	}
+
 }

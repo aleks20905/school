@@ -35,12 +35,9 @@ void iterateAndPlace(double val) {
         prev->val = val;
     }
 }
-
-int main() {
-    Node x = {};
-    cout << "Size of struct: " << sizeof(x) << "\n"; // 16 bytes
-
-    for (int i = 0; i < 3000; i++) {
+void calNode(int n ){
+    
+    for (int i = 0; i < n; i++) {
         Node* newNode = new Node;
         newNode->val = 0.0;
         newNode->next = nodes;
@@ -48,14 +45,28 @@ int main() {
     }
 
     auto start = chrono::steady_clock::now();
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 10000; i++) {
         iterateAndPlace(100.1);
         iterateAndAdd(i);
     }
 
     auto end = chrono::steady_clock::now();
     auto diff = end - start;
-    cout << chrono::duration_cast<ms>(diff).count() << " ms" << endl;
+    cout <<"node N: "<<n<<" "<< chrono::duration_cast<ms>(diff).count() << " ms" << endl;
+
+}
+
+int main() {
+    Node x = {};
+    cout << "Size of struct: " << sizeof(x) << "\n"; // 16 bytes
+
+    for (int i = 100; i < 10000; i+=200)
+    {
+        calNode(i);
+
+    }
+    
+    
 
     return 0;
 }
