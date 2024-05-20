@@ -95,7 +95,7 @@ vector<Coordinate> ReadAndParseFile() {
     return coordinates;
 }
 
-void printMemoryUsage() {
+void printMemoryUsage() { //са мо за Linix 
     ifstream file("/proc/self/statm");
     if (!file.is_open()) {
         cerr << "Error: Could not open /proc/self/statm" << endl;
@@ -105,7 +105,7 @@ void printMemoryUsage() {
     file >> size >> resident >> share >> text >> lib >> data >> dt;
     file.close();
 
-    long pageSize = sysconf(_SC_PAGESIZE); // In bytes
+    long pageSize = sysconf(_SC_PAGESIZE); // In bytes 
     long residentSize = resident * pageSize;
 
     cout << "Memory Usage: " << residentSize / 1024 << " KB" << endl; // Convert to KB
