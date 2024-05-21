@@ -6,6 +6,7 @@
 
 - Ако рагледаме [графиките](https://docs.google.com/spreadsheets/d/12OKOfTIwt9B8t7XGaPYjhSUlAdayeMEGszysIuUacpU/edit?usp=sharing) можем да видим, че няма много разлика и двете решения растат линейно едно спрямо друго, като не се вижда да се разклоняват и двете решения следват една права и Go запазва постоянно 2.7x пъти по-бърз от C++ варианта.
 
+![screenshot](./assets/linked_list.png)
 
 ##### Mem usage:
 
@@ -24,6 +25,7 @@
 ##### Go Time ≈ 7893 ms <[code](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main.go)>  / C++ Time ≈ 12953 ms <[code](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link.cpp)>
 - Отново доста интересни резултати, пак има доста голяма разлика между времената, но изглежда, че и двата варианта са се забавили с еднакво количество. Като отново ``само на 1 thread`` и идентичno поведение както преди малко.
 
+![screenshot](./assets/linked_list_mod.png)
 
 ##### Mem usage:
 
@@ -40,6 +42,7 @@
 - След като започнахме да освобождаваме паметта, видяхме много голям скок в производителността, но отново Go повежда напред.
 - Тук вече по-добре се виждаше силата на Go да храни нишките с данни много бързо. `` Go успяваше да държи 100% натоварване, като през определено време редуваше нишките, докато C++ падаше под 100% `` 
 
+![screenshot](./assets/linked_list_mod_free.png)
 
 ##### Mem usage:
 
@@ -77,8 +80,8 @@
 
 
 
-
-#### На Windows заменете ``getMemoryUsage()`` с показания код, но данните ще се разминават много
+> [!NOTE]
+> На ``Windows`` заменете ``getMemoryUsage()`` с показания код, но данните ще се разминават много
 * ``c++``
 ```c++
 #include <windows.h>
