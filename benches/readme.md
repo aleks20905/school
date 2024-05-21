@@ -48,10 +48,40 @@
 
 -  `` Спрямо ``[графиките](https://docs.google.com/spreadsheets/d/12OKOfTIwt9B8t7XGaPYjhSUlAdayeMEGszysIuUacpU/edit#gid=36193127)``можем да видим, че тук вече има голяма разлика между двата езика`` като след всяко минаване в C++ варианта се чистеха старите Nodes и държахме постоянен Mem usage. Но в Go варианта, дори да искаме да освобождаваме паметта, тя реално не е освободена, докато garbage collector-ът не мине да я затрие.
 
+## Hashmap / Map
+
+##### Go Create Time ≈ 2711 ms / Modify ≈ 1638 ms <[code](https://github.com/aleks20905/school/blob/main/benches/hashmap/main.go)>  / C++ Create Time ≈ 7697 ms/ Modify ≈ 4697 ms <[code](https://github.com/aleks20905/school/blob/main/benches/hashmap/hashmap.cpp)>
+- И двата варианта са доста бързи за количеството, което са обработили, но все пак Go е по-бърз от C++ `` Трябва да се каже, че това сравнение е малко безсмислено, защото сравняваме библиотека срещу вградена функция``
 
 
-###### При `Windows` заменете ``getMemoryUsage()`` с показания код, Но данните ще се разминават много
-c++
+
+##### Mem usage:
+
+##### Go ≈ 644612 kb  /  C++ ≈ 410560 KB
+
+- C++ има по-ниска употреба на памет в сравнение с Go.
+
+
+## CordSim 
+
+##### Go Time taken ≈ 9294 ms <[code](https://github.com/aleks20905/school/blob/main/benches/cordSim/main.go)>  / C++ Time taken ≈ 20056 ms <[code](https://github.com/aleks20905/school/blob/main/benches/cordSim/game.cpp)>
+-Отново, голяма победа по отношение на скорост за Go.`` В защита на C++ има огромна възможност за оптимизации, без да се усложнява кода много``
+
+
+
+##### Mem usage:
+
+##### Go ≈ 110145 kb /  C++ Memory Usage ≈ 27020 KB
+
+- В този случай C++ има 4 пъти по-ниска употреба на памет в сравнение с Go, но в данните се забелязва, че това се дължи най-вече на четенето от файла. Там има огромни загуби, защото няколко пъти се правят копия и Garbage Collector-ът все още не е успял да ги изчисти. Въпреки това, Go пак използва повече памет от C++ в този случай.
+
+
+
+
+
+
+#### На Windows заменете ``getMemoryUsage()`` с показания код, но данните ще се разминават много
+* ``c++``
 ```c++
 #include <windows.h>
 #include <psapi.h>
@@ -65,7 +95,7 @@ size_t getMemoryUsage() {
     return 0;
 }
 ```
-Go 
+- ``Go `` - ``не е точна алтернатива защото показва само алокираната памет, но нямаме друга опция в стандарната библиотека``
 ```Go
 func getMemoryUsage() uint64 {
     var mem runtime.MemStats
