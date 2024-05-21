@@ -135,8 +135,8 @@ int main() {
 
     printMemoryUsage();    
 
-// Time taken: 17660 ms
-// Memory Usage: 27076 KB
+// Time taken: 20056 ms
+// Memory Usage: 27020 KB
 
     return 0;
 }

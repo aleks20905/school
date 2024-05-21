@@ -134,11 +134,13 @@ func getMemoryUsage() uint64 {
 
 func main() {
 
+	fmt.Printf(" | Mem: %v \n", getMemoryUsage()) //1966080 b
 	coordinates, err := ReadAndParseFile()
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+	fmt.Printf(" | Mem: %v \n", getMemoryUsage()) // 161636352 b
 
 	start := time.Now()
 
@@ -161,6 +163,6 @@ func main() {
 	}
 	fmt.Printf("Time taken: %v ms  | Mem: %v \n", time.Since(start).Milliseconds(), getMemoryUsage())
 
-	// Time taken: 8014 ms
-	// Memory Usage: 75972 KB
+	// Time taken: 9294 ms
+	// Mem: 110145 kb
 }
