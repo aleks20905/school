@@ -4,7 +4,7 @@
 
 ##### Mem usage:
 
-##### Go ≈ 152616 bytes [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkList_info/main_result)/[code](https://github.com/aleks20905/school/blob/main/benches/linkList_info/main.go) || C++ ≈ 131072 bytes [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkList_info/link_result)/[code](https://github.com/aleks20905/school/blob/main/benches/linkList_info/link.cpp) 
+##### Go ≈ 1966 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkList_info/main_result)/[code](https://github.com/aleks20905/school/blob/main/benches/linkList_info/main.go) || C++ ≈ 3801 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkList_info/link_result)/[code](https://github.com/aleks20905/school/blob/main/benches/linkList_info/link.cpp) 
 
 -като на данните от c++ не се вижда правилно това е бъг който не можах да го оправя
 
@@ -23,7 +23,7 @@
 
 ##### Mem usage:
 
-##### Go ≈ 4025 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main_result)  /  C++ ≈ 11141 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link_result)
+##### Go ≈ 1835 - 6160 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main_result)  /  C++ ≈ 3538 - 11272 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link_result)
 
 -като на данните от c++ не се вижда правилно това е бъг който не можах да го оправя
 
@@ -40,7 +40,7 @@
 
 ##### Mem usage:
 
-##### Go ≈  565 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main_result)  /  C++ ≈ 3768 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link_result)
+##### Go ≈ 1703 - 5767 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main_result)  /  C++ ≈ 3538 - 3801 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link_result)
 
 
 > `` Ако рагледаме малко ``[графики](https://docs.google.com/spreadsheets/d/12OKOfTIwt9B8t7XGaPYjhSUlAdayeMEGszysIuUacpU/edit?usp=sharing)`` можеж да видим че няма много разлика и двете решения растът линейно спрямо количеството извиквания без да има bottleneck`` (но с толкова малко данни не се учаква да има проблеми, но ако се увеличат данните с много след определено време Go ще започне да се запабя драстично )
