@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"math"
 	"os"
-	"runtime"
 	"strconv"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -114,10 +115,21 @@ func ReadAndParseFile() ([]Coordinate, error) {
 	return coordinates, nil
 }
 
-func printMemoryUsage() {
-	var m runtime.MemStats
-	runtime.ReadMemStats(&m)
-	fmt.Printf("Memory Usage: %v KB\n", m.Alloc/1024)
+func getMemoryUsage() uint64 {
+	data, err := ioutil.ReadFile("/proc/self/statm")
+	if err != nil {
+		fmt.Println("Error: Could not open /proc/self/statm")
+		return 0
+	}
+
+	fields := string(data)
+	var size, resident, share, text, lib, dataValue, dt uint64
+	fmt.Sscanf(fields, "%d %d %d %d %d %d %d", &size, &resident, &share, &text, &lib, &dataValue, &dt)
+
+	pageSize := uint64(syscall.Getpagesize()) // In bytes
+	residentSize := resident * pageSize
+
+	return residentSize
 }
 
 func main() {
@@ -147,9 +159,7 @@ func main() {
 		// directions = player.MoveToOffset(coordinates, float64(i))
 		// _ = player.CalculateDistanceFromDirections(directions)
 	}
-	fmt.Printf("Time taken: %v ms \n", time.Since(start).Milliseconds())
-
-	printMemoryUsage()
+	fmt.Printf("Time taken: %v ms  | Mem: %v \n", time.Since(start).Milliseconds(), getMemoryUsage())
 
 	// Time taken: 8014 ms
 	// Memory Usage: 75972 KB

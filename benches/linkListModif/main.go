@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"runtime"
+	"io/ioutil"
+	"syscall"
 	"time"
 	"unsafe"
 )
@@ -40,9 +41,20 @@ func iterateAndPlace(val float64) {
 	}
 }
 func getMemoryUsage() uint64 {
-	var mem runtime.MemStats
-	runtime.ReadMemStats(&mem)
-	return mem.Alloc
+	data, err := ioutil.ReadFile("/proc/self/statm")
+	if err != nil {
+		fmt.Println("Error: Could not open /proc/self/statm")
+		return 0
+	}
+
+	fields := string(data)
+	var size, resident, share, text, lib, dataValue, dt uint64
+	fmt.Sscanf(fields, "%d %d %d %d %d %d %d", &size, &resident, &share, &text, &lib, &dataValue, &dt)
+
+	pageSize := uint64(syscall.Getpagesize()) // In bytes
+	residentSize := resident * pageSize
+
+	return residentSize
 }
 func calNode(n int) {
 
