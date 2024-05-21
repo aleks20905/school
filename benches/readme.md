@@ -31,3 +31,43 @@
 (направих няколко отита на Go да изчиля натоварването на процесо малко по детаилно но не успях да намеря подходящ tool без да влизам прекалено надълбоко с много сложни итежки 3th party код койдо да прави това )
 
 > `` Ако рагледаме малко ``[графики](https://docs.google.com/spreadsheets/d/12OKOfTIwt9B8t7XGaPYjhSUlAdayeMEGszysIuUacpU/edit?usp=sharing)`` можеж да видим че няма много разлика и двете решения растът линейно спрямо количеството извиквания без да има bottleneck`` (но с толкова малко данни не се учаква да има проблеми, но ако се увеличат данните с много след определено време Go ще започне да се запабя драстично )
+
+
+## linked-list-Mod-Free_Mem
+##### Go Time ≈ 285 ms <[code](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main.go)>  / C++ Time ≈ 518 ms <[code](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link.cpp)>
+>Отново доста интересни резултати пак има доста голяма разлика между времената, отново учкваше се Go да се справя много зле с изпoлзваната памет, но се прави по добре дори от c++, ``Но трябва да се има предивид че кода `НАРОЧНО НЕ` се освобождава памметта``- което забавя доста; 
+>Но се забеляза нещо доста интеренсо как Go без да има нищо специфично казано да прави multithreding имаше някаква нодка защото постепнно се меспетеше между ядрате едно след друго и ги редуваше
+
+##### Mem usage:
+
+##### Go ≈  565 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/main_result)  /  C++ ≈ 3768 kb [Резултати](https://github.com/aleks20905/school/blob/main/benches/linkListModif/link_result)
+
+
+> `` Ако рагледаме малко ``[графики](https://docs.google.com/spreadsheets/d/12OKOfTIwt9B8t7XGaPYjhSUlAdayeMEGszysIuUacpU/edit?usp=sharing)`` можеж да видим че няма много разлика и двете решения растът линейно спрямо количеството извиквания без да има bottleneck`` (но с толкова малко данни не се учаква да има проблеми, но ако се увеличат данните с много след определено време Go ще започне да се запабя драстично )
+
+
+
+###### При `Windows` заменете ``getMemoryUsage()`` с показания код, Но данните ще се разминават много
+c++
+```c++
+#include <windows.h>
+#include <psapi.h>
+
+size_t getMemoryUsage() {
+    PROCESS_MEMORY_COUNTERS_EX pmc;
+    if (GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
+        return pmc.WorkingSetSize;
+    }
+    cerr << "Error: Could not retrieve memory information." << endl;
+    return 0;
+}
+```
+Go 
+```Go
+func getMemoryUsage() uint64 {
+    var mem runtime.MemStats
+    runtime.ReadMemStats(&mem)
+    return mem.Alloc
+}
+
+```
