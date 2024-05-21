@@ -53,7 +53,7 @@ int main() {
     cout << "Size of struct: " << sizeof(x) << "\n";
 
     float initialValue = 0.0;
-    for (int i = 0; i < 6000; i++) {
+    for (int i = 0; i < 3000; i++) {
         Node* newNode = new Node;
         newNode->val = initialValue;
         newNode->next = nodes;
