@@ -1,5 +1,5 @@
 #  School projects or projects be shared fast&easy
-many branches can be missing and be created on the go, so dont expect alot
+many branches can be missing and be created on the go
 
 ## C++
 > For C++ code i mainly use "gcc" to run code.
@@ -11,11 +11,14 @@ in the c++ code section most of the projects have executable files and u can use
 ```bash
 $ ./<program>
 ```
-## Go
+## Go 1.22.0
 >Normaly everyting will run with
 ```bash
 $ go run ... .go 
- or the alternatives for the 
+```
+or
+```bash
+$ air
 ```
  
 >For the *Go* codes, some of projects can use "air" package and be confuse so its not necessary to have air its just easy to use it and more convenient than, manualy closeing the project and starting them again etc.
